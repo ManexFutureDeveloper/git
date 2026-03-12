@@ -68,6 +68,7 @@ docker compose up -d
 | Stack | Descripción | Puertos |
 |-------|-------------|---------|
 | `grafana-prometheus/` | Monitorización con Grafana y Prometheus | Grafana: 3000, Prometheus: 9090 |
+| `uptime-kuma/` | Monitorización de disponibilidad con Uptime Kuma | 3001 |
 
 #### grafana-prometheus
 
@@ -85,6 +86,19 @@ docker compose up -d
 
 > Las credenciales de Grafana se leen del fichero `.env` (ver `.env.example`). Si no se define `.env`, se usan los valores por defecto `admin/admin`.
 
+#### uptime-kuma
+
+Levanta una instancia de [Uptime Kuma](https://github.com/louislam/uptime-kuma), una herramienta de monitorización de disponibilidad autoalojada con panel web.
+
+- **Uptime Kuma** — panel de monitorización (`http://localhost:3001`)
+
+```bash
+cd docker-compose/uptime-kuma
+docker compose up -d
+```
+
+> Accede a `http://localhost:3001` para crear tu cuenta de administrador en el primer inicio.
+
 ---
 
 ## Estructura del repositorio
@@ -95,9 +109,11 @@ git/
 ├── scripts/
 │   └── install_docker.sh
 └── docker-compose/
-    └── grafana-prometheus/
-        ├── .env.example
-        ├── docker-compose.yml
-        └── prometheus/
-            └── prometheus.yml
+    ├── grafana-prometheus/
+    │   ├── .env.example
+    │   ├── docker-compose.yml
+    │   └── prometheus/
+    │       └── prometheus.yml
+    └── uptime-kuma/
+        └── docker-compose.yml
 ```
