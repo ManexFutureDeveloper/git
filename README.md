@@ -52,15 +52,52 @@ chmod +x scripts/*.sh
 
 ---
 
+## Docker Compose
+
+La carpeta `docker-compose/` contiene configuraciones listas para usar con `docker compose`.
+
+### Cómo usar
+
+```bash
+cd docker-compose/<nombre-del-stack>
+docker compose up -d
+```
+
+### Stacks disponibles
+
+| Stack | Descripción | Puertos |
+|-------|-------------|---------|
+| `grafana-prometheus/` | Monitorización con Grafana y Prometheus | Grafana: 3000, Prometheus: 9090 |
+
+#### grafana-prometheus
+
+Levanta una pila de monitorización con:
+- **Prometheus** — recolección de métricas (`http://localhost:9090`)
+- **Grafana** — visualización de métricas (`http://localhost:3000`)
+
+```bash
+cd docker-compose/grafana-prometheus
+# (Opcional) Personaliza las credenciales de Grafana
+cp .env.example .env
+# Edita .env con tus credenciales antes de continuar
+docker compose up -d
+```
+
+> Las credenciales de Grafana se leen del fichero `.env` (ver `.env.example`). Si no se define `.env`, se usan los valores por defecto `admin/admin`.
+
+---
+
 ## Estructura del repositorio
 
 ```
 git/
 ├── README.md
-└── scripts/
-    ├── 
-    ├── 
-    └── install_docker.sh
+├── scripts/
+│   └── install_docker.sh
+└── docker-compose/
+    └── grafana-prometheus/
+        ├── .env.example
+        ├── docker-compose.yml
+        └── prometheus/
+            └── prometheus.yml
 ```
-
-
