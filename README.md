@@ -26,7 +26,7 @@ git --version
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/ManexFutureDeveloper/git.git
+git clone https://github.com/ManexFutureDeveloper/auto.git
 cd git
 ```
 
